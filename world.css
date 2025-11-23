@@ -64,3 +64,30 @@ main {
     border-radius: 4px;
     min-height: 50px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-family: cursive;
+}
+
+table th {
+    background: #1325cd;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #e8e8ff;
+}

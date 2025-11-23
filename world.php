@@ -6,11 +6,8 @@ $dbname = 'world';
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 
-//$stmt = $conn->query("SELECT * FROM countries");
 $country = isset($_GET['country']) ? $_GET['country'] : '';
-
-$country = htmlspecialchars(trim($country),ENT_QUOTES, 'UTF-8');
-//$country = filter_var($country, FILTER_SANITIZE_STRING);
+$country = htmlspecialchars(trim($country), ENT_QUOTES, 'UTF-8');
 
 
 if (!empty($country)) {
@@ -22,10 +19,21 @@ if (!empty($country)) {
 
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Continent</th>
+        <th>Independence</th>
+        <th>Head of State</th>
+    </tr>
+    <?php foreach ($results as $row): ?>
+    <tr>
+        <td><?= $row['name'] ?></td>
+        <td><?= $row['continent'] ?></td>
+        <td><?= $row['independence_year'] ?></td>
+        <td><?= $row['head_of_state'] ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
